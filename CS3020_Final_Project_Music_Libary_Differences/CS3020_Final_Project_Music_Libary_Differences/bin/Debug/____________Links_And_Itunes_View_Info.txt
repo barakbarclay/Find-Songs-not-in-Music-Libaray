@@ -1,0 +1,20 @@
+ITUNES COLUMNS REMOVED: 
+album, time, genre, love, plays
+
+PRINT FROM GOOGLE PLAY:
+https://webapps.stackexchange.com/questions/50311/print-playlist-from-google-play-music
+
+OTHER LINKS:
+http://code2care.org/pages/replace-tabs-by-spaces-or-comma-notepad-plus-plus/
+https://discussions.apple.com/thread/2716946?answerId=12913069022#12913069022
+https://stackoverflow.com/questions/2344320/comparing-strings-with-tolerance
+https://stackoverflow.com/questions/1857513/get-substring-everything-before-certain-char
+https://stackoverflow.com/questions/1120198/most-efficient-way-to-remove-special-characters-from-string
+https://stackoverflow.com/questions/6424420/how-to-sort-a-list-by-a-integer-stored-in-the-struct-my-list-holds
+https://superuser.com/questions/832908/reformat-text-as-columns-in-notepad
+
+
+PRINT FROM YOUTUBE:
+https://www.tunemymusic.com/
+https://soundiiz.com/
+https://alternativeto.net/software/soundiiz/
