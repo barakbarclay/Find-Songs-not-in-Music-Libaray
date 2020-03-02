@@ -6,75 +6,114 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace CS3020_Final_Project_Music_Libary_Differences
+namespace CS3020_Final_Project_Music_Libary_Differences_school
 {
     class Program
     {
         static void Main(string[] args)
         {
             /// <summary>
-            ///     INPUT FILES MUST HAVE EACH SONG ON A SEPERATE LINE WITH THE ARTIST NAME BEFORE THE SONG NAME ON THE LINE.
-            ///     TO MAKE IT EASY TO LOOK AT & GET RID OF MORE SONGS BEFORE USER INPUT:
+            ///     INPUT FILES MUST HAVE EACH SONG ON A SEPERATE LINE WITH ARTIST NAME
             ///     PUT INPUT IN ALL CAPS
             ///     SEPERATE ARTIST NAME AND SONG NAME WITH |
             ///     CHANGE SQUARE BRACKESTS TO PARENTHESIS
-            ///     USE NOTEPAD++ CODE ALIGNMENT WITH |
+            ///     
+            ///     EXTRA:
+            ///     USE NOTEPAD++ CODE ALIGNMENT WITH | (Can also use code below)
             ///     USE FIND AND REPLACE TO ADD EXTRA TABS AND SPACES IN THE NEEEDED FILE 
             /// </summary>
 
 
 
+
+
             /// <summary>
+            /// FOR INPUT FILE BEFORE ACTUAL PROGRAM
             /// REMOVE DUPLICATES WITHIN SONGS TO CHECK FILE
             /// </summary>
-            string line;
-            int numOfOccurences = 0;
-            string tempFile = Path.GetTempFileName();
-            StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Youtube_Music_Songs.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                
-                IEnumerable<string> linesToKeep = File.ReadLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt").Where(l =>
-                {
-                if (RemoveJunk(l) != RemoveJunk(line))
-                {
-                    numOfOccurences++;
-                }
-                if (numOfOccurences <= 1)
-                {
-                    return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                });
-                numOfOccurences = 0;
-                File.WriteAllLines(tempFile, linesToKeep);   
-            }
-            File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            file.Close();
+            //https://www.textfixer.com/tools/remove-duplicate-lines.php
+
+
 
 
 
             /// <summary>
+            /// FOR INPUT FILE BEFORE ACTUAL PROGRAM
+            /// TEXT ALIGNMENT
+            /// </summary>
+            //string line;
+            //List<string> linesToKeep = new List<string>();
+            //string tempFile = Path.GetTempFileName();
+            //StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    string[] leftAndRight = line.Split('|');
+            //    linesToKeep.Add($"{leftAndRight[0].Trim(),-61}" + "|" + leftAndRight[1].Trim());
+            //}
+            //File.WriteAllLines(tempFile, linesToKeep);
+            //file.Close();
+            //File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+
+
+
+
+
+            /// <summary>
+            /// BEGINING OF ACTUAL PROGRAM
             /// GETS RID OF EXACT MATCHES IGNORING JUNK FROM STRINGS
             /// </summary>
             //string line;
-            //StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
+            //string l;
+            //int foundMatch;
+            //int count;
+            //string lineWithoutJunk;
+            //string[] lineFromItunesFileSplit;
+            //List<string> lineFromItunesFileSwappedAroundDelimiter = new List<string>();
+            //List<string> linesToKeep = new List<string>();
+            //List<string> Itunes_Songs_Caps = new List<string>();
+            //StreamReader file2 = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
+            //StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //while ((l = file2.ReadLine()) != null)
+            //{
+            //    Itunes_Songs_Caps.Add(l);
+            //}
+            //file2.Close();
+            //for (int i = 0; i < Itunes_Songs_Caps.Count; i++)
+            //{
+            //    lineFromItunesFileSplit = RemoveJunk(Itunes_Songs_Caps[i]).Split('|');
+            //    lineFromItunesFileSwappedAroundDelimiter.Add(lineFromItunesFileSplit[1] + "|" + lineFromItunesFileSplit[0]);
+            //}
+            //Console.WriteLine("\nCheck Songs Below for Different Versions:\n");
             //while ((line = file.ReadLine()) != null)
             //{
-            //    string tempFile = Path.GetTempFileName();
-            //    IEnumerable<string> linesToKeep = File.ReadLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt").Where(l => RemoveJunk(l) != RemoveJunk(line));
-            //    //var linesToKeep = File.ReadLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt").Where(l => string.Equals(l, line, StringComparison.CurrentCultureIgnoreCase) == false);
-
-            //    File.WriteAllLines(tempFile, linesToKeep);
-
-            //    File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            //    File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //    foundMatch = 0;
+            //    count = 0;
+            //    lineWithoutJunk = RemoveJunk(line);
+            //    while (count < Itunes_Songs_Caps.Count && foundMatch == 0)
+            //    {
+            //        if (RemoveJunk(Itunes_Songs_Caps[count]) == lineWithoutJunk || lineFromItunesFileSwappedAroundDelimiter[count] == lineWithoutJunk)
+            //        {
+            //            foundMatch = 1;
+            //            if (line.Contains("("))
+            //            {
+            //                Console.WriteLine(line);
+            //            }
+            //        }
+            //        count++;
+            //    }
+            //    if (foundMatch == 0)
+            //    {
+            //        linesToKeep.Add(line);
+            //    }
             //}
             //file.Close();
+            //string tempFile = Path.GetTempFileName();
+            //File.WriteAllLines(tempFile, linesToKeep);
+            //File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+
+
 
 
 
@@ -82,86 +121,141 @@ namespace CS3020_Final_Project_Music_Libary_Differences
             /// GETS RID OF STRINGS WITH DISTANCE OF 3 OR LESS IGNORING JUNK
             /// </summary>
             //string line;
-            //StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
+            //string l;
+            //int foundMatch;
+            //int count;
+            //string lineWithoutJunk;
+            //string[] lineFromItunesFileSplit;
+            //List<string> leftOfBar = new List<string>();
+            //List<string> rightOfBar = new List<string>();
+            //List<string> lineFromItunesFileWithoutJunk = new List<string>();
+            //List<string> lineFromItunesFileSwappedAroundDelimiter = new List<string>();
+            //List<string> linesToKeep = new List<string>();
+            //List<string> Itunes_Songs_Caps = new List<string>();
+            //StreamReader file2 = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
+            //StreamReader file = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //while ((l = file2.ReadLine()) != null)
+            //{
+            //    Itunes_Songs_Caps.Add(l);
+            //}
+            //file2.Close();
+            //for (int i = 0; i < Itunes_Songs_Caps.Count; i++)
+            //{
+            //    lineFromItunesFileWithoutJunk.Add(RemoveJunk(Itunes_Songs_Caps[i]));
+            //    lineFromItunesFileSplit = RemoveJunk(Itunes_Songs_Caps[i]).Split('|');
+            //    leftOfBar.Add(lineFromItunesFileSplit[0]);
+            //    rightOfBar.Add(lineFromItunesFileSplit[1]);
+            //    lineFromItunesFileSwappedAroundDelimiter.Add(lineFromItunesFileSplit[1] + "|" + lineFromItunesFileSplit[0]);
+            //}
+            //Console.WriteLine("\nSongs Removed From Levenshtein Distance greater than 3 and\nhave less than 7 non-special character on left or right side of bar:\n");
             //while ((line = file.ReadLine()) != null)
             //{
-            //    string tempFile = Path.GetTempFileName();
-            //    IEnumerable<string> linesToKeep = File.ReadLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt").Where(l => LevenshteinDistance.Compute(RemoveJunk(l), RemoveJunk(line)) > 3);
-
-            //    File.WriteAllLines(tempFile, linesToKeep);
-
-            //    File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            //    File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //    foundMatch = 0;
+            //    count = 0;
+            //    lineWithoutJunk = RemoveJunk(line);
+            //    while (count < Itunes_Songs_Caps.Count && foundMatch == 0)
+            //    {
+            //        if (LevenshteinDistance.Compute(lineFromItunesFileWithoutJunk[count], lineWithoutJunk) <= 3 || LevenshteinDistance.Compute(lineFromItunesFileSwappedAroundDelimiter[count], lineWithoutJunk) <= 3)
+            //        {
+            //            foundMatch = 1;
+            //            if (leftOfBar[count].Length < 7 || rightOfBar[count].Length < 7)
+            //            {
+            //                Console.WriteLine(line);
+            //            }
+            //        }
+            //        count++;
+            //    }
+            //    if (foundMatch == 0)
+            //    {
+            //        linesToKeep.Add(line);
+            //    }
             //}
             //file.Close();
+            //string tempFile = Path.GetTempFileName();
+            //File.WriteAllLines(tempFile, linesToKeep);
+            //File.Delete(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            //File.Move(tempFile, @AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+
+
 
 
 
             /// <summary>
             /// CODE BELOW IN MAIN IS TO ALLOW USER TO CHOOSE WHAT TO DO WITH REMAINDING SONGS
             /// </summary>
-            //List<string> linesToDownload = new List<string>();
-            //List<string> linesToManuallyCheck = new List<string>();
-            //List<string> linesToKeep = new List<string>();
+            List<string> linesToDownload = new List<string>();
+            List<string> linesToManuallyCheck = new List<string>();
+            List<string> linesToKeep = new List<string>();
 
-            //string lineFromInitializeLinesToKeep;
-            //StreamReader initializeLinesToKeep = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            //while ((lineFromInitializeLinesToKeep = initializeLinesToKeep.ReadLine()) != null)//CHANGE TO NULL TO RUN THROUGH WHOLE THING
-            //{
-            //    linesToKeep.Add(lineFromInitializeLinesToKeep);
-            //}
-            //initializeLinesToKeep.Close();
+            string lineFromInitializeLinesToKeep;
+            StreamReader initializeLinesToKeep = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            while ((lineFromInitializeLinesToKeep = initializeLinesToKeep.ReadLine()) != null)//CHANGE TO NULL TO RUN THROUGH WHOLE THING
+            {
+                linesToKeep.Add(lineFromInitializeLinesToKeep);
+            }
+            initializeLinesToKeep.Close();
 
-            //char keepMoveDeleteSong = 'a';
-            //string lineFromCheckFile;
-            //string lineFromItunesFile;
-            //StreamReader songsToCheckFile = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
-            //while ((lineFromCheckFile = songsToCheckFile.ReadLine()) != null)
-            //{
+            char keepMoveDeleteSong = 'a';
+            string lineFromCheckFile;
+            string lineFromItunesFile;
+            string[] lineFromItunesFileSplit;
+            string lineFromItunesFileSwappedAroundDelimiter;
+            StreamReader songsToCheckFile = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Check.txt");
+            while ((lineFromCheckFile = songsToCheckFile.ReadLine()) != null)
+            {
 
-            //    List<Data> list = new List<Data>();
-            //    StreamReader itunesSongsFile = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
-            //    while ((lineFromItunesFile = itunesSongsFile.ReadLine()) != null)
-            //    {
-            //        list.Add(new Data(LevenshteinDistance.Compute(RemoveJunk(lineFromItunesFile), RemoveJunk(lineFromCheckFile)), lineFromItunesFile));
-            //    }
-            //    itunesSongsFile.Close();
+                List<Data> LevenshteinDistanceValues = new List<Data>();
+                StreamReader itunesSongsFile = new StreamReader(@AppDomain.CurrentDomain.BaseDirectory + "\\Itunes_Songs_Caps.txt");
+                while ((lineFromItunesFile = itunesSongsFile.ReadLine()) != null)
+                {
+                    LevenshteinDistanceValues.Add(new Data(LevenshteinDistance.Compute(RemoveJunk(lineFromItunesFile), RemoveJunk(lineFromCheckFile)), lineFromItunesFile));
+                    //Swap around | and check distance again
+                    lineFromItunesFileSplit = RemoveJunk(lineFromItunesFile).Split('|');
+                    lineFromItunesFileSwappedAroundDelimiter = lineFromItunesFileSplit[1] + "|" + lineFromItunesFileSplit[0];
+                    LevenshteinDistanceValues.Add(new Data(LevenshteinDistance.Compute(lineFromItunesFileSwappedAroundDelimiter, RemoveJunk(lineFromCheckFile)), lineFromItunesFile));
+                }
+                itunesSongsFile.Close();
 
-            //    Console.WriteLine("\n\t" + lineFromCheckFile + "\n");
-            //    list.Sort((i1, i2) => i1.IntegerData.CompareTo(i2.IntegerData));
-            //    for (int index = 0; index < 40; index++)
-            //    {
-            //        Console.WriteLine(list[index].IntegerData + ":\t" + list[index].StringData);
-            //    }
+                Console.WriteLine("\n\t" + lineFromCheckFile + "\n");
+                LevenshteinDistanceValues.Sort((i1, i2) => i1.IntegerData.CompareTo(i2.IntegerData));
+                for (int index = 0; index < 40; index++)
+                {
+                    Console.WriteLine(LevenshteinDistanceValues[index].IntegerData + ":\t" + LevenshteinDistanceValues[index].StringData);
+                }
 
-            //    Console.WriteLine("\na = already have\nw = we need to manually check this song\nd = download list");
-            //    keepMoveDeleteSong = Console.ReadKey().KeyChar;
-            //    switch (keepMoveDeleteSong)
-            //    {
-            //        case 'a':
-            //            linesToKeep.Remove(lineFromCheckFile);
-            //            File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
-            //            File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Already_Have.txt", "\n" + lineFromCheckFile);
-            //            break;
-            //        case 'w':
-            //            linesToKeep.Remove(lineFromCheckFile);
-            //            File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
-            //            File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Manually_Check.txt", "\n" + lineFromCheckFile);
-            //            break;
-            //        case 'd':
-            //            linesToKeep.Remove(lineFromCheckFile);
-            //            File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
-            //            File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Download.txt", "\n" + lineFromCheckFile);
-            //            break;
-            //        // Does nothing if you accidently hit something else
-            //        default:
-            //            break;
-            //    }
-            //    Console.Clear();
-            //}
-            //songsToCheckFile.Close();
-            //Console.WriteLine("Press any key to continue.");
-            //Console.ReadKey();
+                Console.WriteLine("\na = already have\nw = we need to manually check this song\nd = download list");
+                keepMoveDeleteSong = Console.ReadKey().KeyChar;
+                switch (keepMoveDeleteSong)
+                {
+                    case 'a':
+                    case 'A':
+                        linesToKeep.Remove(lineFromCheckFile);
+                        File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
+                        File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Already_Have.txt", "\n" + lineFromCheckFile);
+                        break;
+                    case 'w':
+                    case 'W':
+                        linesToKeep.Remove(lineFromCheckFile);
+                        File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
+                        File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Manually_Check.txt", "\n" + lineFromCheckFile);
+                        break;
+                    case 'd':
+                    case 'D':
+                        linesToKeep.Remove(lineFromCheckFile);
+                        File.WriteAllLines(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_Left_To_Check.txt", linesToKeep);
+                        File.AppendAllText(@AppDomain.CurrentDomain.BaseDirectory + "\\Songs_To_Download.txt", "\n" + lineFromCheckFile);
+                        break;
+                    // Does nothing if you accidently hit something else
+                    default:
+                        break;
+                }
+                Console.Clear();
+            }
+            songsToCheckFile.Close();
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
+
+
 
 
 
@@ -185,7 +279,7 @@ namespace CS3020_Final_Project_Music_Libary_Differences
 
         public static string RemoveSpecialCharacters(string str)
         {
-            return Regex.Replace(str, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
+            return Regex.Replace(str, "[^a-zA-Z0-9|]+", "", RegexOptions.Compiled);
         }
     }
 

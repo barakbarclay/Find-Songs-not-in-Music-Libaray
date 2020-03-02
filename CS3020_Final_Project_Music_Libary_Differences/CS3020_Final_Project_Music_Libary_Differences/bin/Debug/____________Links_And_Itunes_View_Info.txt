@@ -18,3 +18,11 @@ PRINT FROM YOUTUBE:
 https://www.tunemymusic.com/
 https://soundiiz.com/
 https://alternativeto.net/software/soundiiz/
+
+PRINT FROM PANDORA:
+https://www.reddit.com/r/Pandora/comments/6og294/pandora_australia_users_i_wrote_a_script_to/
+https://pastebin.com/9br3VZjX
+
+PRINT FROM ALL:
+https://webscraper.io/tutorials
+Web Scrapper browser add-on
